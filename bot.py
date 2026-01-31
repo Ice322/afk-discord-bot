@@ -8,6 +8,9 @@ import os
 # ================= НАСТРОЙКИ =================
 
 TOKEN = os.getenv("TOKEN")
+if TOKEN is None:
+    raise RuntimeError("TOKEN not found in environment variables")
+bot.run(TOKEN)
 THUMBNAIL_URL = "https://media.discordapp.net/attachments/1070143838435422288/1070143912766865499/1b1261398fdfc086.png?ex=697f4bef&is=697dfa6f&hm=a413afa35cc7d39601b902008cf087398ff950844f4eb161d8ef7dfc5164f4f3&=&format=webp&quality=lossless&width=856&height=856"  # ссылка на картинку
 
 # ============================================
@@ -190,8 +193,3 @@ async def afkpanel(ctx):
 async def on_ready():
     print(f"Бот запущен: {bot.user}")
     bot.loop.create_task(live_timer())
-
-
-# ================= START =================
-
-bot.run(TOKEN)
