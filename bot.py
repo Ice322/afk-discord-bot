@@ -5,6 +5,10 @@ import json
 import os
 from datetime import datetime, timedelta
 from typing import Optional
+from dotenv import load_dotenv
+
+# Загрузка переменных окружения из .env файла (если существует)
+load_dotenv()
 
 # Инициализация бота
 intents = discord.Intents.default()
@@ -264,9 +268,12 @@ async def afk_stats(interaction: discord.Interaction):
 
 # Запуск бота
 if __name__ == "__main__":
-    import os
     TOKEN = os.getenv("DISCORD_TOKEN")
+    
     if not TOKEN:
         print("❌ Ошибка: DISCORD_TOKEN не установлен!")
+        print(f"📋 Доступные переменные окружения: {list(os.environ.keys())}")
         exit(1)
+    
+    print(f"✅ Токен найден (первые 10 символов): {TOKEN[:10]}...")
     bot.run(TOKEN)
