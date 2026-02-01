@@ -4,6 +4,7 @@ from datetime import datetime, timedelta
 import asyncio
 import re
 import os
+from dotenv import load_dotenv; load_dotenv()
 
 # ================= НАСТРОЙКИ =================
 
