@@ -7,18 +7,8 @@ import os
 
 # ================= НАСТРОЙКИ =================
 
-# Сначала пробуем взять токен из переменной окружения
 TOKEN = os.getenv("TOKEN")
-
-# Если токен не задан в переменных окружения, можно временно прописать его напрямую
-# ВНИМАНИЕ: не оставляй токен в коде при выкладывании на GitHub или публичные сервисы!
-if not TOKEN:
-    TOKEN = "MTQ2NzI2Njc4NDA2MjA3OTE2MA.Gmmv8l.NV7ZQ94iLDOm1E3vaTYHOYUv68VfUPoK6tJZaM"  # <-- вставь сюда токен Discord бота
-
-if not TOKEN:
-    raise RuntimeError("TOKEN not found in environment variables or in code")
-
-THUMBNAIL_URL = "https://media.discordapp.net/attachments/1070143838435422288/1070143912766865499/1b1261398fdfc086.png?ex=697f4bef&is=697dfa6f&hm=a413afa35cc7d39601b902008cf087398ff950844f4eb161d8ef7dfc5164f4f3&=&format=webp&quality=lossless&width=856&height=856"
+THUMBNAIL_URL = "https://media.discordapp.net/attachments/1070143838435422288/1070143912766865499/1b1261398fdfc086.png?ex=697f4bef&is=697dfa6f&hm=a413afa35cc7d39601b902008cf087398ff950844f4eb161d8ef7dfc5164f4f3&=&format=webp&quality=lossless&width=856&height=856"  # ссылка на картинку
 
 # ============================================
 
@@ -31,6 +21,7 @@ afk_users = {}
 
 panel_message_id = None
 panel_channel_id = None
+
 
 # ================= ОБНОВЛЕНИЕ ПАНЕЛИ =================
 
@@ -193,12 +184,10 @@ async def afkpanel(ctx):
 
     panel_message_id = msg.id
     panel_channel_id = ctx.channel.id
-
 # ================= READY =================
 
 @bot.event
 async def on_ready():
     print(f"Бот запущен: {bot.user}")
     bot.loop.create_task(live_timer())
-
 bot.run(TOKEN)
