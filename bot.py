@@ -1,4 +1,3 @@
-from dotenv import load_dotenv; load_dotenv()
 import discord
 from discord.ext import commands
 from datetime import datetime, timedelta
@@ -10,7 +9,7 @@ import os
 
 TOKEN = os.getenv("TOKEN")
 if not TOKEN:
-    raise RuntimeError("TOKEN not found in environment variables")
+    raise RuntimeError("TOKEN not found in environment variables or in code")
 THUMBNAIL_URL = "https://media.discordapp.net/attachments/1070143838435422288/1070143912766865499/1b1261398fdfc086.png?ex=697f4bef&is=697dfa6f&hm=a413afa35cc7d39601b902008cf087398ff950844f4eb161d8ef7dfc5164f4f3&=&format=webp&quality=lossless&width=856&height=856"  # ссылка на картинку
 
 # ============================================
